@@ -16,7 +16,7 @@ Changes to original FjordRPM simulation code
 Additional code falls into 4 categories: **experiments**, **sensitivity tests**, **analysis**, and **functions**. 
 ### experiments
 We run 16 base experiments (marine/land) and (deep/shallow) and (sill/no sill) and (1x/3x freshwater). We also vary the shelf salinity profile between constant and linear, giving us 32 experiments total.
-* `experiments.m` runs 16 experiments x2 shelf profile types (constant `c` or linear `ls`). saves runs to experiment_data
+* `experiments.m` runs 16 experiments x2 shelf profile types (constant `c` or linear `ls`). saves runs to experiment_data (to correlate name to type, see spreadsheet `experiment_filenames.xlsx`!
 * folders:
     * `experiment_data` contains all 32 experiments (see `experiment_filenames.xlsx` for reference)
     * `experiment_sheets` contains all .xlsx files
