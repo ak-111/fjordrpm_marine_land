@@ -44,8 +44,8 @@ We run 16 base experiments (marine/land) and (deep/shallow) and (sill/no sill) a
 ## figures
 to access figures instead of generating them, go to `experiments/experiment_figures`
 * sensitivity tests
-   * `K0_C0` and `Kb_C0` (land or marine) contour plots; we find K0 and Kb do not have any noticeable effect on Qin/ deltaS/ Sout
-   * `N_H_C0...` plot of Qin and Hout scalings  
+   * `K0_C0` and `Kb_C0` (land or marine) contour plots; we find K0 and Kb do not have any noticeable effect on $S_{out}$, $Q_{in}$, $\Delta S$
+   * `N_H_C0...` plot of $Q_in$ and $H_out$ scalings  
    * `Qin_vs_QFW` (land or marine) plot of Qin scalings for freshwater input
 * stratification
    * `coast_strat...` plot of layer adjustments and stratification differences for adjustment time of 2 days
