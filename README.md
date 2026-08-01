@@ -41,3 +41,16 @@ We run 16 base experiments (marine/land) and (deep/shallow) and (sill/no sill) a
 * `get_stratification` takes in two salt slices and calculates density, stratification index, and potential energy anomaly
 * `find_outflow_layer` takes in a run and returns the layer of outflow
 
+## figures
+to access figures instead of generating them, go to `experiments/experiment_figures`
+* sensitivity tests
+   * `K0_C0` and `Kb_C0` (land or marine) contour plots; we find K0 and Kb do not have any noticeable effect on Qin/ deltaS/ Sout
+   * `N_H_C0...` plot of Qin and Hout scalings  
+   * `Qin_vs_QFW` (land or marine) plot of Qin scalings for freshwater input
+* stratification
+   * `coast_strat...` plot of layer adjustments and stratification differences for adjustment time of 2 days
+   * `stratification...` plot of density & strat. index
+   * `timescales...` plot model timescales for mixing/advection/shelf exchange (frictional) for a given run
+* regimes
+   * `regimes` plots all 16 experiments for the linear shelf stratification case
+
