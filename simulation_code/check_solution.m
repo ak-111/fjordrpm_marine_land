@@ -9,11 +9,16 @@ status = 0;
 
 % get max volume change
 maxdVdt = max(abs(sum(s.QVp(:,:,i),1)'+s.QVs(:,i)+s.QVk(:,i)+s.QVi(:,i)+s.QVv(:,i)+s.QVsurf(:,i)));
+% find which flux is causing the prob!!!
+
 
 % change error status and display warning if above tolerance
 if maxdVdt>1e-8
     disp(['Warning: volume possibly not conserved, max dV/dt = ',...
            num2str(maxdVdt)]);
+    % find which index is the problem!!
+    [~, index] = max(abs([sum(s.QVp(:,:,i),"all");sum(s.QVs(:,i));sum(s.QVk(:,i));sum(s.QVi(:,i));sum(s.QVv(:,i));sum(s.QVsurf(:,i))]));
+    disp(index);
     status = 1;
 end
 

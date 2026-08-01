@@ -22,7 +22,7 @@ end
 
 % compute the above-sill fluxes before barotropic compensation; these are
 % zero if the controlling parameter p.C0 = 0
-Q = p.C0*p.W*H0(1:s.ksill).*phi0(1:s.ksill)/p.L;
+Q = p.W*p.C0*H0(1:s.ksill).*phi0(1:s.ksill)/p.L;
 
 % compute the above-sill fluxes after barotropic compensation, ensuring
 % depth mean = Qsg0+submarine melt flux+riverine flux

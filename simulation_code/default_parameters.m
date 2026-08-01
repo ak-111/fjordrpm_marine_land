@@ -30,6 +30,7 @@ p.K0 = 5e-3;       % vertical mixing scale
 p.Kb = 1e-6;       % background vertical mixing
 p.Ri0 = 0.7;       % Richardson number dependency of mixing
 p.M0 = 5e-7;       % iceberg melt efficiency (m s^-1 degC^-1)
+p.sm = 0;          % submarine melting (1 on or 0 off)
 p.U0 = 1;          % scale iceberg upwelling
 p.kairsea = 30;    % air-sea heat flux coefficient (W m^-2 degC^-1)
 

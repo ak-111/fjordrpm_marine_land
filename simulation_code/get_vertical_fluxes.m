@@ -9,10 +9,11 @@ T0 = s.T(:,i); S0 = s.S(:,i);
 
 % net flux imbalance
 Qnet = sum(s.QVp(:,:,i),1)'+s.QVs(:,i)+s.QVi(:,i)+s.QVsurf(:,i);
-
+% disp([sum(s.QVp(:,:,i),1)',s.QVs(:,i),s.QVi(:,i),s.QVsurf(:,i)]);
 % the vertical flux required for no net volume change is the sum of the
 % flux imbalances above
 QVint = -cumsum(Qnet(1:end-1));
+% disp(QVint);
 % the relevant temperature/salinity flux depends on the direction
 QTint = (QVint<0).*QVint.*T0(1:end-1) + (QVint>=0).*QVint.*T0(2:end);
 QSint = (QVint<0).*QVint.*S0(1:end-1) + (QVint>=0).*QVint.*S0(2:end);

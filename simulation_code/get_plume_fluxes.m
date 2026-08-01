@@ -50,6 +50,7 @@ for j = 1:length(p.Wp)
         QEp0(j,:) = Qent;
         QMp0(j,:) = Qmelt;
         knb0(j) = knb;
+        % disp(Qent);
     
     end
 

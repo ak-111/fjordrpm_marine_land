@@ -1,4 +1,4 @@
-function [Qent, Qmelt, knb] = run_plume(j, p, kgl, H0, S0, T0, Qsg0);
+function [Qent, Qmelt, knb] = run_plume(j, p, kgl, H0, S0, T0, Qsg0)
 
 % RUN_PLUME Solves for discharge plume dynamics using plume-melt theory.
 %   [Qent, Qmelt, knb] = RUN_PLUME(j, p, kgl, H0, S0, T0, Qsg0) solves
@@ -18,6 +18,9 @@ kgl = length(H0)-kgl+1;
 % initialise output variables for entrainment and submarine melt flux
 Qent = zeros(length(H0),1);
 Qmelt = zeros(length(H0),1);
+% deltau_real = zeros(length(H0),1);
+% deltau_ = zeros(length(H0),1);
+% utob = zeros(length(H0),1);
 
 % set initial plume model variables
 Tp(kgl) = p.l2+p.l3*p.Hgl(j); % temperature
@@ -60,7 +63,14 @@ while gp(k)>0 & k<length(H0)
     edot(k) = p.alphap*u(k);
     [mdot(k),Tb(k),Sb(k)] = meltrate(p,u(k),Tp(k),Sp(k),p.Hgl(j)-sum(H0(kgl:k-1)));
 
+    % deltau_real(k) = u(k)-u(k-1);
+    % deltau_(k) = (b(k)*gp(k) - (p.Cd + p.alphap)*u(k)^2) / (b(k)*u(k));
+    % utob(k) = u(k)/(b(k)-b(k-1));
+
 end
+
+
+% plot(fliplr(utob))
 
 % scale the volume fluxes for plume width and orient shallowest first to
 % put back into FjordRPM up-down orientation

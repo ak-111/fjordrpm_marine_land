@@ -1,7 +1,6 @@
-function [QVk0,QTk0,QSk0] = get_mixing_fluxes(i, p, s)
-
+function [QVk0,QTk0,QSk0, Ri, t_adv, t_mix] = get_mixing_fluxes(i, p, s) 
 % GET_MIXING_FLUXES Compute vertical tracer mixing fluxes.
-%   [QVK0, QTK0, QSK0] = GET_MIXING_FLUXES(i, p, s) computes the
+%   [QVK0, QTK0, QSK0, Ri] = GET_MIXING_FLUXES(i, p, s) computes the
 %   vertical mixing fluxes QVK0, QTK0, QSSK0 for the given parameters p
 %   and solution s at timestep i.
 
@@ -15,7 +14,6 @@ QVk0 = 0*H0;
 
 % reduced gravity between layers
 gp = p.g*(p.betaS*(S0(2:end)-S0(1:end-1))-p.betaT*(T0(2:end)-T0(1:end-1)));
-
 % horizontal velocity of layers
 if size(s.QVp,1)==1
     u = (s.QVp(:,:,i)'-s.QVs(:,i))./(2*p.W*H0);
@@ -32,6 +30,10 @@ Ri(Ri<0) = 0;
 
 % get diffusivity as a function of the Richardson number
 Kz = p.Kb + (Ri<p.Ri0 & Ri>0)*p.K0.*(1-(Ri/p.Ri0).^2).^3;
+
+% calculate timescales as mean over all layers
+t_adv = mean((p.L ./ abs(u)));    % t_adv = L/u
+t_mix = mean((p.Hs .* p.Hs) ./ Kz); % t_mix = H^2/Kz
 
 % compute the mixing fluxes going in/out of each layer.
 QS = 2*p.W*p.L*Kz.*(S0(2:end)-S0(1:end-1))./(H0(2:end)+H0(1:end-1));

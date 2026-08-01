@@ -31,6 +31,10 @@ for i = 1:length(t)-1
 
     % check for errors at this new timestep
     status = check_solution(i, s);
+    % if status == 1
+    % 
+    %     return
+    % end
     
 end
 
