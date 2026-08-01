@@ -40,4 +40,4 @@ subplot(1,2,2);
 title("Anomaly $\Delta \phi (z) (J/m^3)$", "Interpreter","latex");
  
 sgtitle("Stratification Comparison");
-savefig
+ savefig('experiments/experiment_figures/compare_strat.fig')

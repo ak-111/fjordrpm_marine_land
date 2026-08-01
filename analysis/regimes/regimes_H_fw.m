@@ -4,7 +4,7 @@
 
 clear; close all;
  
-path2sourcecode = '/Users/antara/Documents/MATLAB/SAGE-Lab-fjord-rpm';
+path2sourcecode = '/Users/antara/Documents/MATLAB/fjordrpm_marine_land';
 addpath(genpath(path2sourcecode));
  
 types = ["marine","land"];

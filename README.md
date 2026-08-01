@@ -53,4 +53,5 @@ to access figures instead of generating them, go to `experiments/experiment_figu
    * `timescales...` plot model timescales for mixing/advection/shelf exchange (frictional) for a given run
 * regimes
    * `regimes` plots all 16 experiments for the linear shelf stratification case
+   * `regimes_H` and `regimes_fw` show variations in depth and freshwater
 
