@@ -1,4 +1,4 @@
-# FjordRPM: Marine- vs Land- Terminating Investigations
+# FjordRPM: marine- vs land- terminating investigations
 
 Using the model FjordRPM developed by D. Slater et al. (`https://github.com/fjord-mix/fjordrpm.git`), we simulate and compare fjords with marine- or land-terminating glaciers. 
 We investigate parameter sensitivities, analyze stratification differences, identify behavioral regimes, and briefly compare coastal stratification differences. 
