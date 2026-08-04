@@ -2,16 +2,17 @@
 
 figure();
  
-filenames = ["8_ls","16_ls"];
-labels = ["marine","land"];
-colors = ["b","g"];
+filenames = ["5_ls","6_ls"]; % choose any 2 or more to compare
+labels = ["marine deep sill","marine deep no sill"]; % label files
+legend_str = {}; 
+colors = ["b","cyan"]; % useful to choose b, g if comparing marine and land
  
-for i = 1:2
+for i = 1:length(filenames)
     load("experiments/experiment_data/"+filenames(i)+".mat", 's','p','f');
  
     c = colors(i);
  
-    z = 800;
+    z = p.H;
     h = z / p.H * p.N;
  
     S_end = s.S(:,end); % take slices from last timestep
@@ -25,6 +26,8 @@ for i = 1:2
     subplot(1,2,1); hold on
     plot(phi_start(1:h), -p.zs(1:h), '--', 'LineWidth',1.5, 'Color', 'k');
     plot(phi_end(1:h), -p.zs(1:h), 'LineWidth',1.5, 'Color', c);
+    legend_str = [legend_str, 'start' + string(i), labels(i)];
+
  
     % plot potential energy anomaly
     subplot(1,2,2); hold on
@@ -33,11 +36,11 @@ end
  
 subplot(1,2,1);
 title("Stratification Index $\phi (z)$", "Interpreter","latex");
-legend({'start','marine end', '', 'land end'});
+legend(legend_str);
 ylabel('Depth (m)')
  
 subplot(1,2,2);
 title("Anomaly $\Delta \phi (z) (J/m^3)$", "Interpreter","latex");
  
 sgtitle("Stratification Comparison");
- savefig('experiments/experiment_figures/compare_strat.fig')
+savefig('experiments/experiment_figures/compare_strat.fig')

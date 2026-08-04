@@ -2,7 +2,7 @@
 
 close('all')
  
-filenames = ["8_c","8_ls","16_c","16_ls"];
+filenames = ["7_ls"];
 labels = ["marine c","marine ls","land c","land ls"];
  
 for i = 1:length(filenames)
