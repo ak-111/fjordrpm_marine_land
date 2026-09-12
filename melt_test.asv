@@ -1,0 +1,25 @@
+% Melt test
+
+%set up parameters
+type = "marine";
+fws = linspace(0,1000,50);
+shelf = "c";
+H = 800;
+sill = false;
+N = 50;
+melt = 1; % turn melting on
+
+Q_sm = zeros()
+
+for fw = fws
+    % set up model
+    [p,t,f,a] = setup_fjordrpm(type, fw, shelf, H, sill, N,[],[],[], melt);
+    % run model
+    s = run_model(p, t, f, a);
+
+    % store total submarine melt flux Q_sm
+    Q_sm = squeeze(sum(s.QMp,2));
+    Q_sm_ss = mean(Q_sm(3000:end)); % steady state value
+
+end
+

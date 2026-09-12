@@ -1,4 +1,4 @@
-function [p,t,f,a] = setup_fjordrpm(type, fw, shelf, H, sill, N, dt, t_end, t_save_dt)
+function [p,t,f,a] = setup_fjordrpm(type, fw, shelf, H, sill, N, dt, t_end, t_save_dt, melt)
 
 % SETUP_FJORDRPM
 %
@@ -7,7 +7,6 @@ function [p,t,f,a] = setup_fjordrpm(type, fw, shelf, H, sill, N, dt, t_end, t_sa
 %   fjord width/length
 %   time stepping
 %   temperature
-%   no submarine melting
 %   no icebergs)
 % And returns all model structures [p t f a] to be fed into a run
 %
@@ -35,6 +34,7 @@ function [p,t,f,a] = setup_fjordrpm(type, fw, shelf, H, sill, N, dt, t_end, t_sa
 %   dt        - time step in days. default 0.1
 %   t_end     - end time in days. default 3 years
 %   t_save_dt - save interval in days. default = 0.1
+%   melt      - submarine melting parameter. Turned off (0) or on (1)
 %
 % Outputs:
 %   p     - parameters
@@ -48,7 +48,6 @@ addpath(genpath(path2sourcecode));
 
 % --default params--
 p = default_parameters;
-p.sm = 0; % melting turned off for now
 p.C0 = 1e5;
 
 
@@ -78,6 +77,9 @@ end
 if nargin < 7 || isempty(dt),        dt = 0.1;        end
 if nargin < 8 || isempty(t_end),     t_end = 3*365;      end
 if nargin < 9 || isempty(t_save_dt), t_save_dt = 0.1;   end
+if nargin < 10 || isempty(melt), melt = 0;   end
+
+p.sm = melt; 
 
 % --fjord geometry--
 p.W = 5e3;          % fjord width (m)
