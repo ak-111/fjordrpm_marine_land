@@ -96,7 +96,8 @@ s.Sout = sum((s.QVs<0).*s.QVs.*s.S, 1)./s.Qout; % outflowing salinity fjord > sh
 s.t_mix = s.t_mix(inx);
 s.t_adv = s.t_adv(inx);
 
-s.R = s.R(:, inx);
+% calculate total freshwater flux from all sources (Qsg + Qr + QMp + QMi) 
+s.Q_fw = s.Qsg + s.Qr + squeeze(sum(s.QMp,2)).' + squeeze(sum(s.QMi));
 
 % error status
 s.status = status;

@@ -30,7 +30,7 @@ s.knb = zeros(length(p.Wp), length(t));
 s.Qsg = zeros(length(p.Wp), length(t));
 
 % fields with dimensions 1 x length(t)
-[s.Qr, s.Tr, s.Sr, s.Ta, s.Qout, s.Qin, s.Sin, s.Sout, s.t_adv, s.t_mix] = deal(zeros(1, length(t)));
+[s.Qr, s.Tr, s.Sr, s.Ta, s.Qout, s.Qin, s.Sin, s.Sout, s.t_adv, s.t_mix, s.Q_fw] = deal(zeros(1, length(t)));
 
 %% initialise layer depths
 
@@ -89,8 +89,5 @@ centres_new = 0.5*(ints_new(1:end-1)+ints_new(2:end));
 s.T(:,1) = interp1(centres_old,a.T0,centres_new,'linear','extrap');
 s.S(:,1) = interp1(centres_old,a.S0,centres_new,'linear','extrap');
 s.I = interp1(centres_old,a.I0,centres_new,'linear','extrap');
-
-% to test richardson #, store Ri for every run
-s.R = zeros(p.N-1,length(t));
 
 end

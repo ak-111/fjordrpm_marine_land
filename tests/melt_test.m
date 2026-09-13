@@ -3,7 +3,8 @@
 
 %set up parameters
 type = "marine";
-fws = linspace(0,1000,50);
+% fws = linspace(0,1000,50);
+fws = [300];
 shelf = "c";
 H = 800;
 sill = false;

@@ -22,11 +22,7 @@ for type = types
         s = run_model(p,t,f,a);
  
         Qin = s.Qin(end);
-        if type == "marine"
-            Q_FW = s.Qsg(end);
-        else
-            Q_FW = s.Qr(end);
-        end
+        Q_FW = s.Q_fw(end);
         S_out = s.Sout(end);
         S_in = s.Sin(end);
  
@@ -51,11 +47,7 @@ for type = types
         s = run_model(p,t,f,a);
  
         Qin = s.Qin(end);
-        if type == "marine"
-            Q_FW = s.Qsg(end);
-        else
-            Q_FW = s.Qr(end);
-        end
+        Q_FW = s.Q_fw(end);
         S_out = s.Sout(end);
         S_in = s.Sin(end);
  
