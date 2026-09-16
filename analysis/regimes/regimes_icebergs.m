@@ -13,7 +13,7 @@ shelf = "ls";
 %% run over Q_sg magnitude 
 fws = linspace(100,1000,10);
 n = 2*length(fws);
-[circ, strat] = deal(zeros(1,n));
+[circ, strat, q_fws] = deal(zeros(1,n));
  
 j = 1;
 for icebergs = [true, false]
@@ -38,12 +38,13 @@ for icebergs = [true, false]
  
         circ(j) = Qin/Q_FW;
         strat(j) = (S_in-S_out)/S_out;
+        q_fws(j) = s.Q_fw(end);
  
         j = j+1;
     end
 end
  
-plot_reg(strat, circ, fws, 'land and marine: icebergs and no icebergs');
+plot_reg(strat, circ, q_fws, 'marine: icebergs and no icebergs');
  
 
 %% a function to plot since I do it twice
@@ -59,7 +60,7 @@ function plot_reg(strat, circ, labels_vals, plot_title)
     scatter(strat(n/2+1:end), circ(n/2+1:end), 'yellow', 'filled') %no icebergs
     legend({'','icebergs','no icebergs'})
  
-    labels = repmat("  "+string(labels_vals), 1, 2);
+    labels = "  " + string(round(labels_vals));
     text(strat, circ, cellstr(labels), "FontSize", 7);
  
     ylabel('Q_{in}/Q_{FW}')
