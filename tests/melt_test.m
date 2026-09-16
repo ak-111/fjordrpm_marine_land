@@ -1,11 +1,11 @@
 % Turning on submarine melting parameter
+% deep no sill 
 % + adding icebergs
 
 %set up parameters
 type = "marine";
-% fws = linspace(0,1000,50);
-fws = [300];
-shelf = "c";
+fws = linspace(0,1000,50);
+shelf = "ls";
 H = 800;
 sill = false;
 N = 50;
@@ -28,7 +28,7 @@ for i = 1:length(fws)
     % run model
     s = run_model(p, t, f, a);
 
-    % store total fluxes Q_sm (submarine melt flux) and Q_im (iceberg melt
+    % store total melt fluxes Q_sm (submarine melt flux) and Q_im (iceberg melt
     % flux)
 
     Qsm = squeeze(sum(s.QMp,2));
