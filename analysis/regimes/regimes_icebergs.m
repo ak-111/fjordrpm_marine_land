@@ -20,7 +20,7 @@ for icebergs = [true, false]
     for i = 1:length(fws)
         % turn on melting
         melt = 1;
-        [p,t,f,a] = setup_fjordrpm(type, fws(i), shelf, 200, false, 50, 0.1, 3*365, 1, melt);
+        [p,t,f,a] = setup_fjordrpm(type, fws(i), shelf, 800, false, 50, 0.1, 3*365, 1, melt);
         
         % if icebergs = true, add icebergs 
         if icebergs
@@ -57,7 +57,7 @@ function plot_reg(strat, circ, labels_vals, plot_title)
     figure(); hold on
     plot(x, y, '--','Color','black')
     scatter(strat(1:n/2), circ(1:n/2), 'b', 'filled','diamond') %icebergs
-    scatter(strat(n/2+1:end), circ(n/2+1:end), 'yellow', 'filled') %no icebergs
+    scatter(strat(n/2+1:end), circ(n/2+1:end), 'cyan', 'filled') %no icebergs
     legend({'','icebergs','no icebergs'})
  
     labels = "  " + string(round(labels_vals));
