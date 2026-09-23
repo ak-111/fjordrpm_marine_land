@@ -48,8 +48,8 @@ for n = 1:num
     [~,~,phi_start,phi_end] = get_stratification(S_start, S_end, p);
     zs = (1:p.N)' .* p.H0;
     
-    phi_idx = (phi_depth / p.H/ p.N)*p.H; %get the layer index at chosen depth!
-    delta_phis(n) = phi_end(phi_idx) - phi_start(phi_idx);  
+    phi_idx = round((phi_depth / p.H)*p.N); %get the layer index at chosen depth!
+    delta_phis(n) = delta_phi(phi_idx);  
  
     % save variation labels for writing to sheet
     Experiment(n) = n;
@@ -61,5 +61,5 @@ for n = 1:num
 end
  
 T = table(Experiment, Type, Depth, FW_input, Sill, Q_in_ss, delta_S_ss./S_out_ss, H_outs, H_ins, delta_phis, ...
-    'VariableNames', {'Experiment','Type','Depth','FW_input','Sill','Q_in','ΔS_to_Sout','H_outs','H_ins','Δφ (100m)'});
+    'VariableNames', {'Experiment','Type','Depth','FW_input','Sill','Q_in','ΔS_to_Sout','H_outs','H_ins','Δφ (100)'});
 writetable(T,'experiments_'+shelf+'.xlsx','Sheet','Sheet1');

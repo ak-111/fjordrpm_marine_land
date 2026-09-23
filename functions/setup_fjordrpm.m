@@ -88,7 +88,7 @@ p.H = H;             % fjord depth (m)
 p.sill = double(sill); % 1 if sill present, 0 otherwise
 p.Hsill = 0.5*p.H;   % sill depth below surface (m), only used if p.sill=1
 
-% --model layers--
+% model layers
 % N = number of layers
 a.H0 = (p.H/N)*ones(N,1); % layer thicknesses, taken to be equal
 
@@ -98,14 +98,14 @@ p.zs_mid = (0.5:1:N-0.5)'.* a.H0; % N x 1 mid-layer depths
 p.H0 = a.H0;
 p.N = N;
 
-% --time stepping--
+% time stepping
 t = 0:dt:t_end;
 p.t_save = 0:t_save_dt:t_end;
 
 f.tsg = t;
 f.tsurf = t;
 
-% --shelf forcing--
+% shelf forcing
 f.ts = [0, t_end];
 f.zs = [-p.H; 0];
 
@@ -116,7 +116,7 @@ else
 end
 f.Ts = 3*ones(length(f.zs), length(f.ts)); % shelf temperature
 
-% --type-dependent fw input--
+% type-dependent fw input
 switch typenum
     case 1 % marine-terminating
         f.Qsg = fw*(f.tsg >= 200);
@@ -132,7 +132,7 @@ switch typenum
         f.Sr = 0*f.tsurf;
 end
 
-% --fjord initial conditions--
+% fjord initial conditions
 [a.T0, a.S0] = bin_shelf_profiles(f.Ts(:,1), f.Ss(:,1), f.zs, a.H0);
 % no icebergs
 a.I0 = 0*a.H0;
