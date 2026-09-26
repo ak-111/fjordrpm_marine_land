@@ -31,10 +31,6 @@ S0 = Sinterp(z0);
 Tinterp = griddedInterpolant(f.zs,f.Ts,'pchip','nearest');
 T0 = Tinterp(z0);
 
-% % bandaid right now
-% T0 = repelem(f.Ts, 25, 1);
-% T0 = cat(1,f.Ts(1,:), T0);
-
 % calculate shelf temperature and salinity Ts0 and Ss0 on model layers
 ints = [0; -cumsum(H)];
 for k=1:length(ints)-1
